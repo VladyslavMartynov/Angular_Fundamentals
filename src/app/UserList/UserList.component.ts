@@ -1,9 +1,5 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-
-export interface IUser {
-  id: string,
-  name: string
-}
+import { IUser } from "../types";
 
 @Component({
   selector: 'app-user-list',
@@ -12,12 +8,10 @@ export interface IUser {
 })
 
 export class UserListComponent {
-  @Input() userList: IUser[] = [] as IUser[];
   newUserName: string = '';
-
-  @Output() removeUserEvent = new EventEmitter<IUser['id']>()
-  @Output() addUserEvent = new EventEmitter<string>()
-
+  @Input() userList: IUser[] = [];
+  @Output() removeUserEvent = new EventEmitter<string>();
+  @Output() addUserEvent = new EventEmitter<string>();
 
   setNewName(event: Event): void {
     this.newUserName = (event.target as HTMLInputElement).value
