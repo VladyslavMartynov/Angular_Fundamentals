@@ -1,0 +1,10 @@
+<div>
+  <h1>User List</h1>
+  <input type="text" [value]="newUserName" (change)="setNewName($event)" class="user-container"/>
+  <button (click)="addUser()">Add user</button>
+  <ul *ngFor="let user of userList">
+     <li>{{user.id}} {{user.name}}</li>
+    <span (click)="removeUserEvent.emit(user.id)">Remove</span>
+  </ul>
+</div>
+
